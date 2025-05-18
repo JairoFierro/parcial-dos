@@ -1,5 +1,5 @@
-import { EstudianteEntity } from 'src/estudiante/estudiante.entity';
-import { ReseniaEntity } from 'src/resenia/resenia.entity';
+import { EstudianteEntity } from '../estudiante/estudiante.entity';
+import { ReseniaEntity } from '../resenia/resenia.entity';
 import {
   Column,
   Entity,

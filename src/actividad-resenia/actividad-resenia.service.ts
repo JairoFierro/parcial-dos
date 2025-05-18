@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ActividadEntity } from 'src/actividad/actividad.entity';
-import { ReseniaEntity } from 'src/resenia/resenia.entity';
+import { ActividadEntity } from '../actividad/actividad.entity';
+import { ReseniaEntity } from '../resenia/resenia.entity';
 import { Repository } from 'typeorm';
 import {
   BussinessError,
   BussinessLogicException,
-} from 'src/shared/errors/business-errors';
+} from '../shared/errors/business-errors';
 
 @Injectable()
 export class ActividadReseniaService {

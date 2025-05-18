@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import {
   BussinessError,
   BussinessLogicException,
-} from 'src/shared/business-errors';
+} from 'src/shared/errors/business-errors';
 
 @Injectable()
 export class ActividadService {
@@ -23,24 +23,56 @@ export class ActividadService {
         BussinessError.PRECONDITION_FAILED,
       );
     }
+    if (!/^[a-zA-Z0-9\s]+$/.test(newActividad.titulo)) {
+      throw new BussinessLogicException(
+        'El título contiene caracteres inválidos',
+        BussinessError.PRECONDITION_FAILED,
+      );
+    }
     const actividad = this.actividadRepository.save(newActividad);
     return actividad;
   }
 
   async cambiarEstado(
     actividadID: number,
-    estado: string,
+    newEstado: number,
   ): Promise<ActividadEntity> {
     const persistedActividad = await this.actividadRepository.findOne({
-      where: { actividadID },
+      where: { id: actividadID },
+      relations: ['estudiantes', 'resenias'],
     });
+
     if (!persistedActividad)
       throw new BussinessLogicException(
         'La actividad no fue encontrada',
         BussinessError.NOT_FOUND,
       );
 
-    persistedActividad.estado = estado;
+    if (![0, 1, 2].includes(newEstado)) {
+      throw new BussinessLogicException(
+        'Estado inválido',
+        BussinessError.PRECONDITION_FAILED,
+      );
+    }
+
+    const inscritos = persistedActividad.estudiantes.length;
+    const porcentaje = (inscritos / persistedActividad.cupoMaximo) * 100;
+
+    if (newEstado === 1 && porcentaje < 80) {
+      throw new BussinessLogicException(
+        'Menos del 80% de cupo ocupado',
+        BussinessError.PRECONDITION_FAILED,
+      );
+    }
+
+    if (newEstado === 2 && inscritos < persistedActividad.cupoMaximo) {
+      throw new BussinessLogicException(
+        'Hay cupos disponibles',
+        BussinessError.PRECONDITION_FAILED,
+      );
+    }
+
+    persistedActividad.estado = newEstado;
     return await this.actividadRepository.save(persistedActividad);
   }
 

@@ -18,7 +18,7 @@ export class ActividadReseniaService {
     private readonly reseniaRepository: Repository<ReseniaEntity>,
   ) {}
 
-  async agregarReseña(newResenia: ReseniaEntity): Promise<ReseniaEntity> {
+  async agregarResenia(newResenia: ReseniaEntity): Promise<ReseniaEntity> {
     const actividad = await this.actividadRepository.findOne({
       where: { id: newResenia.actividad.id },
       relations: ['estudiantes', 'resenias'],

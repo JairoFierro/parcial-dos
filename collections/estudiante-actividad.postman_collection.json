@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "a93023bc-182c-4701-9ad5-7c707a404c5f",
+		"name": "estudiante-actividad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32619701",
+		"_collection_link": "https://pruebas-open-banking-20242.postman.co/workspace/1d93b68a-9138-4c68-8d12-f3d8c19b5237/collection/32619701-a93023bc-182c-4701-9ad5-7c707a404c5f?action=share&source=collection_link&creator=32619701"
+	},
+	"item": [
+		{
+			"name": "Inscribirse actividad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/estudiantes/{{estudiante_id}}/actividades/{{actividad_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"estudiantes",
+						"{{estudiante_id}}",
+						"actividades",
+						"{{actividad_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Inscribirse actividad",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"id\": 2,\r\n    \"numCedula\": 1098765432,\r\n    \"nombre\": \"Santiago Duarte\",\r\n    \"correo\": \"s.duarte@uniandes.edu.co\",\r\n    \"programa\": \"Diseño\",\r\n    \"semestre\": 5,\r\n    \"actividades\": [\r\n      {\r\n        \"id\": 12,\r\n        \"titulo\": \"Workshop de UX\",\r\n        \"fecha\": \"2025-05-15\",\r\n        \"cupoMaximo\": 15,\r\n        \"estado\": 0\r\n      }\r\n    ],\r\n    \"resenias\": []\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/estudiantes/{{estudiante_id}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"estudiantes",
+								"{{estudiante_id}}",
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

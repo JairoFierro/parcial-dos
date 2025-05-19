@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "ef19dad2-d74b-43c3-85e9-f59d8fa4aaba",
+		"name": "resenias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32619701",
+		"_collection_link": "https://pruebas-open-banking-20242.postman.co/workspace/1d93b68a-9138-4c68-8d12-f3d8c19b5237/collection/32619701-ef19dad2-d74b-43c3-85e9-f59d8fa4aaba?action=share&source=collection_link&creator=32619701"
+	},
+	"item": [
+		{
+			"name": "Add resenia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"comentario\": \"La actividad fue muy útil para el desarrollo de habilidades prácticas.\",\r\n  \"calificacion\": 5,\r\n  \"fecha\": \"2025-06-21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/resenias",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"resenias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add resenia",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":1,\r\n  \"comentario\": \"La actividad fue muy útil para el desarrollo de habilidades prácticas.\",\r\n  \"calificacion\": 5,\r\n  \"fecha\": \"2025-06-21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/resenias",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"resenias"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get all resenia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/resenias",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"resenias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all resenia",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 101,\r\n    \"comentario\": \"La actividad fue excelente, aprendí mucho sobre IA.\",\r\n    \"calificacion\": 5,\r\n    \"fecha\": \"2025-06-21\",\r\n    \"estudiante\": {\r\n      \"id\": 1,\r\n      \"nombre\": \"Valentina Ríos\",\r\n      \"correo\": \"valentina.rios@uniandes.edu.co\",\r\n      \"programa\": \"Ingeniería de Sistemas\",\r\n      \"semestre\": 7\r\n    },\r\n    \"actividad\": {\r\n      \"id\": 3,\r\n      \"titulo\": \"Conferencia de Inteligencia Artificial\",\r\n      \"fecha\": \"2025-06-20\",\r\n      \"estado\": 2\r\n    }\r\n  },\r\n  {\r\n    \"id\": 102,\r\n    \"comentario\": \"Bien organizada pero el tiempo fue corto.\",\r\n    \"calificacion\": 4,\r\n    \"fecha\": \"2025-06-15\",\r\n    \"estudiante\": {\r\n      \"id\": 2,\r\n      \"nombre\": \"Santiago Duarte\",\r\n      \"correo\": \"s.duarte@uniandes.edu.co\",\r\n      \"programa\": \"Diseño\",\r\n      \"semestre\": 5\r\n    },\r\n    \"actividad\": {\r\n      \"id\": 1,\r\n      \"titulo\": \"Taller de Robótica\",\r\n      \"fecha\": \"2025-06-05\",\r\n      \"estado\": 1\r\n    }\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/resenias",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"resenias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get one resenia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resenias/{{resenia_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenias",
+						"{{resenia_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get one resenia",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 101,\r\n  \"comentario\": \"La actividad fue excelente, aprendí mucho sobre IA.\",\r\n  \"calificacion\": 5,\r\n  \"fecha\": \"2025-06-21\",\r\n  \"estudiante\": {\r\n    \"id\": 1,\r\n    \"nombre\": \"Valentina Ríos\",\r\n    \"correo\": \"valentina.rios@uniandes.edu.co\",\r\n    \"programa\": \"Ingeniería de Sistemas\",\r\n    \"semestre\": 7\r\n  },\r\n  \"actividad\": {\r\n    \"id\": 3,\r\n    \"titulo\": \"Conferencia de Inteligencia Artificial\",\r\n    \"fecha\": \"2025-06-20\",\r\n    \"estado\": 2,\r\n    \"cupoMaximo\": 50\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/resenias/{{resenia_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resenias",
+								"{{resenia_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update a resenia",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"comentario\": \"La actividad fue muy útil para el desarrollo de habilidades prácticas.\",\r\n  \"calificacion\": 2,\r\n  \"fecha\": \"2025-06-21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resenias/{{resenia_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenias",
+						"{{resenia_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update a resenia",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":1,\r\n  \"comentario\": \"La actividad fue muy útil para el desarrollo de habilidades prácticas.\",\r\n  \"calificacion\": 2,\r\n  \"fecha\": \"2025-06-21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/resenias/{{resenia_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resenias",
+								"{{resenia_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete a resenia",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resenias/{{resenia_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenias",
+						"{{resenia_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a resenia",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/resenias/{{resenia_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resenias",
+								"{{resenia_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

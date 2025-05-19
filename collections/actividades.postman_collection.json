@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "f5ff7049-0b07-458a-83ae-dd9b25ef4062",
+		"name": "actividades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32619701",
+		"_collection_link": "https://pruebas-open-banking-20242.postman.co/workspace/1d93b68a-9138-4c68-8d12-f3d8c19b5237/collection/32619701-f5ff7049-0b07-458a-83ae-dd9b25ef4062?action=share&source=collection_link&creator=32619701"
+	},
+	"item": [
+		{
+			"name": "Add activity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Seminario de Realidad Aumentada\",\r\n  \"fecha\": \"2025-06-12\",\r\n  \"cupoMaximo\": 30,\r\n  \"estado\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/actividades",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"actividades"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add activity",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 42,\r\n  \"titulo\": \"Seminario de Realidad Aumentada\",\r\n  \"fecha\": \"2025-06-12\",\r\n  \"cupoMaximo\": 30,\r\n  \"estado\": 0,\r\n  \"estudiantes\": [],\r\n  \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/actividades",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"actividades"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get all activities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/actividades",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"actividades"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all activities",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"id\": 1,\r\n    \"titulo\": \"Taller de Robótica\",\r\n    \"fecha\": \"2025-06-05\",\r\n    \"cupoMaximo\": 20,\r\n    \"estado\": 1,\r\n    \"estudiantes\": [\r\n      {\r\n        \"id\": 10,\r\n        \"nombre\": \"Valentina Ríos\",\r\n        \"numCedula\": 1023456789,\r\n        \"correo\": \"valentina.rios@uniandes.edu.co\",\r\n        \"programa\": \"Ingeniería de Sistemas\",\r\n        \"semestre\": 7\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"nombre\": \"Santiago Duarte\",\r\n        \"numCedula\": 1098765432,\r\n        \"correo\": \"s.duarte@uniandes.edu.co\",\r\n        \"programa\": \"Diseño\",\r\n        \"semestre\": 5\r\n      }\r\n    ],\r\n    \"resenias\": [\r\n      {\r\n        \"id\": 100,\r\n        \"comentario\": \"Excelente actividad, muy práctica.\",\r\n        \"calificacion\": 5,\r\n        \"fecha\": \"2025-06-06\",\r\n        \"estudiante\": {\r\n          \"id\": 10,\r\n          \"nombre\": \"Valentina Ríos\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  {\r\n    \"id\": 2,\r\n    \"titulo\": \"Conferencia de Inteligencia Artificial\",\r\n    \"fecha\": \"2025-06-20\",\r\n    \"cupoMaximo\": 50,\r\n    \"estado\": 2,\r\n    \"estudiantes\": [],\r\n    \"resenias\": []\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/actividades",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"actividades"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get one activity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actividades/{{actividad_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actividades",
+						"{{actividad_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get one activity",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"titulo\": \"Conferencia de Inteligencia Artificial\",\r\n    \"fecha\": \"2025-06-20\",\r\n    \"cupoMaximo\": 50,\r\n    \"estado\": 2,\r\n    \"estudiantes\": [],\r\n    \"resenias\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update an activity",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Seminario de Realidad Aumentada\",\r\n  \"fecha\": \"2025-06-12\",\r\n  \"cupoMaximo\": 30,\r\n  \"estado\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/actividades/{{actividad_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actividades",
+						"{{actividad_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update an activity",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n  \"id\":1,\r\n  \"titulo\": \"Seminario de Realidad Aumentada\",\r\n  \"fecha\": \"2025-06-12\",\r\n  \"cupoMaximo\": 30,\r\n  \"estado\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete an activity",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/actividades/{{actividad_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"actividades",
+						"{{actividad_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete an activity",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/actividades/{{actividad_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actividades",
+								"{{actividad_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

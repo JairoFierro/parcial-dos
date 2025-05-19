@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "787c5167-d287-4e94-81a2-5c1c1721169f",
+		"name": "actividad-resenia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32619701",
+		"_collection_link": "https://pruebas-open-banking-20242.postman.co/workspace/1d93b68a-9138-4c68-8d12-f3d8c19b5237/collection/32619701-787c5167-d287-4e94-81a2-5c1c1721169f?action=share&source=collection_link&creator=32619701"
+	},
+	"item": [
+		{
+			"name": "agregar resenia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/actividades/{{actividad_id}}/resenias/{{resenia_id}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"actividades",
+						"{{actividad_id}}",
+						"resenias",
+						"{{resenia_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "agregar resenia",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"id\": 1,\r\n    \"titulo\": \"Taller de Robótica\",\r\n    \"fecha\": \"2025-06-05\",\r\n    \"cupoMaximo\": 20,\r\n    \"estado\": 1,\r\n    \"estudiantes\": [\r\n      {\r\n        \"id\": 10,\r\n        \"nombre\": \"Valentina Ríos\",\r\n        \"numCedula\": 1023456789,\r\n        \"correo\": \"valentina.rios@uniandes.edu.co\",\r\n        \"programa\": \"Ingeniería de Sistemas\",\r\n        \"semestre\": 7\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"nombre\": \"Santiago Duarte\",\r\n        \"numCedula\": 1098765432,\r\n        \"correo\": \"s.duarte@uniandes.edu.co\",\r\n        \"programa\": \"Diseño\",\r\n        \"semestre\": 5\r\n      }\r\n    ],\r\n    \"resenias\": [\r\n      {\r\n        \"id\": 100,\r\n        \"comentario\": \"Excelente actividad, muy práctica.\",\r\n        \"calificacion\": 5,\r\n        \"fecha\": \"2025-06-06\",\r\n        \"estudiante\": {\r\n          \"id\": 10,\r\n          \"nombre\": \"Valentina Ríos\"\r\n        }\r\n      }\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/actividades/{{actividad_id}}/resenias/{{resenia_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"actividades",
+								"{{actividad_id}}",
+								"resenias",
+								"{{resenia_id}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

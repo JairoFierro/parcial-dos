@@ -5,11 +5,14 @@ import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { faker } from '@faker-js/faker';
+import { EstudianteEntity } from '../estudiante/estudiante.entity';
 
 describe('ActividadService', () => {
   let service: ActividadService;
   let repository: Repository<ActividadEntity>;
+  let repositoryEstudiante: Repository<EstudianteEntity>;
   let actividadesList: ActividadEntity[];
+  let estudiantesList: EstudianteEntity[];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -21,12 +24,28 @@ describe('ActividadService', () => {
     repository = module.get<Repository<ActividadEntity>>(
       getRepositoryToken(ActividadEntity),
     );
+    repositoryEstudiante = module.get<Repository<EstudianteEntity>>(
+      getRepositoryToken(EstudianteEntity),
+    );
 
     await seedDatabase();
   });
 
   const seedDatabase = async () => {
     await repository.clear();
+
+    estudiantesList = [];
+    for (let i = 0; i < 5; i++) {
+      const estudiante = await repositoryEstudiante.save({
+        numCedula: faker.number.int({ min: 1, max: 10 }),
+        nombre: faker.person.firstName(),
+        correo: faker.internet.email(),
+        programa: faker.lorem.word(),
+        semestre: faker.number.int({ min: 1, max: 10 }),
+      });
+      estudiantesList.push(estudiante);
+    }
+
     actividadesList = [];
     for (let i = 0; i < 5; i++) {
       const actividad = await repository.save({
@@ -34,6 +53,8 @@ describe('ActividadService', () => {
         fecha: faker.date.recent().toISOString(),
         cupoMaximo: faker.number.int({ min: 1, max: 100 }),
         estado: faker.number.int({ min: 1, max: 3 }),
+        estudiantes: estudiantesList.slice(0, 5),
+        resenias: [],
       });
       actividadesList.push(actividad);
     }
@@ -47,7 +68,7 @@ describe('ActividadService', () => {
   it('crearActividad debería crear una actividad válida', async () => {
     const actividad: ActividadEntity = {
       id: 0,
-      titulo: 'Concierto de música andina',
+      titulo: 'Concierto de musica andina',
       fecha: '2025-05-20',
       cupoMaximo: 50,
       estado: 0,
@@ -82,7 +103,7 @@ describe('ActividadService', () => {
       fecha: '2025-05-21',
       cupoMaximo: 5,
       estado: 0,
-      estudiantes: Array(4), // simulación: 4 inscritos
+      estudiantes: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }], // simulación: 4 inscritos
       resenias: [],
     });
 
@@ -96,11 +117,12 @@ describe('ActividadService', () => {
       fecha: '2025-05-22',
       cupoMaximo: 5,
       estado: 0,
-      estudiantes: Array(2),
+      estudiantes: estudiantesList.slice(0, 3), // simulación: 2 inscritos
       resenias: [],
     });
 
-    await expect(service.cambiarEstado(actividad.id, 1)).rejects.toThrowError(
+    await expect(service.cambiarEstado(actividad.id, 1)).rejects.toHaveProperty(
+      'message',
       'Menos del 80% de cupo ocupado',
     );
   });

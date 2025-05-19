@@ -53,7 +53,7 @@ export class EstudianteActividadService {
 
     const estudiante = await this.estudianteRepository.findOne({
       where: { id: estudianteID },
-      relations: ['artworks', 'exhibitions'],
+      relations: ['actividades', 'resenias'],
     });
     if (!estudiante)
       throw new BussinessLogicException(
